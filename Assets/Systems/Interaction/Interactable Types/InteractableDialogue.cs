@@ -4,10 +4,10 @@ public class InteractableDIalogue : MonoBehaviour, IInteractable
 {
     public ServiceHub hub;
     public string name;
-    public string Dialogue;
+    public string[] Dialogue;
     public void Interact()
     {
-
+        hub.DialogueManager.startDialogue(name,Dialogue);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
