@@ -460,6 +460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc77c516dfd4314fb32cc04e807df47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serviceHub: {fileID: 1756705437}
+  talking: 0
 --- !u!1 &400608470
 GameObject:
   m_ObjectHideFlags: 0
@@ -10302,7 +10304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiManager: {fileID: 1220462168}
   player: {fileID: 631075048}
-  dialogueManager: {fileID: 0}
+  dialogueManager: {fileID: 156539598}
 --- !u!4 &1756705438
 Transform:
   m_ObjectHideFlags: 0
