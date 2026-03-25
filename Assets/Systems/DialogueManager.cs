@@ -41,9 +41,18 @@ public class DialogueManager : MonoBehaviour
 
 
     }
-    
+    IEnumerator writeDialog(string currentText)
+    {
+        for(int i = 0; i < currentText.Length; i++)
+        {
+            uIManager.WriteDialogue(currentText[i].ToString());
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
     public void CountinueText(string name)
     {
+        StopAllCoroutines();
+        uIManager.clearDialogueBox();
         if(dialogue.Count == 0)
         {
             stopTalking();
@@ -53,8 +62,8 @@ public class DialogueManager : MonoBehaviour
 
         string currentText = dialogue.Dequeue();
 
-
-        uIManager.WriteDialogue(currentText);
+        StartCoroutine(writeDialog(currentText));
+        
 
 
 

@@ -114,7 +114,11 @@ public class UIManager : MonoBehaviour
     }
     public void WriteDialogue(string Dialogue)
     {
-        dialogueText.text = Dialogue;
+        dialogueText.text += Dialogue;
+    }
+    public void clearDialogueBox()
+    {
+        dialogueText.text = "";
     }
 
     #endregion
