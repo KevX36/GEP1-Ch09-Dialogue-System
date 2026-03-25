@@ -11,12 +11,12 @@ public class DialogueManager : MonoBehaviour
 {
 
     public ServiceHub serviceHub;
-
+    private bool wrightingDialogue = false;
     public bool talking = false;
     private UIManager uIManager;
     private Queue<string> dialogue;
     private PlayerMovementController playerController;
-
+    private string currentText;
     private void Start()
     {
         dialogue = new Queue<string>();
@@ -41,29 +41,41 @@ public class DialogueManager : MonoBehaviour
 
 
     }
-    IEnumerator writeDialog(string currentText)
+    IEnumerator writeDialogue()
     {
+        wrightingDialogue = true;
         for(int i = 0; i < currentText.Length; i++)
         {
             uIManager.WriteDialogue(currentText[i].ToString());
             yield return new WaitForSeconds(0.01f);
         }
+        wrightingDialogue = false;
     }
     public void CountinueText(string name)
     {
-        StopAllCoroutines();
-        uIManager.clearDialogueBox();
-        if(dialogue.Count == 0)
+
+        if (!wrightingDialogue)
         {
-            stopTalking();
-            return;
+            
+            uIManager.clearDialogueBox();
+            if (dialogue.Count == 0)
+            {
+                stopTalking();
+                return;
+            }
+
+
+            currentText = dialogue.Dequeue();
+
+            StartCoroutine(writeDialogue());
         }
-
-
-        string currentText = dialogue.Dequeue();
-
-        StartCoroutine(writeDialog(currentText));
-        
+        else
+        {
+            StopAllCoroutines();
+            uIManager.clearDialogueBox();
+            uIManager.WriteDialogue(currentText);
+            wrightingDialogue = false;
+        }
 
 
 
