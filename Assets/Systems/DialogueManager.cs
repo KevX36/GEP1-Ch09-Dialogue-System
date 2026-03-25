@@ -41,6 +41,7 @@ public class DialogueManager : MonoBehaviour
 
 
     }
+    //why is it that you are never right about how hard programming anything will be
     IEnumerator writeDialogue()
     {
         wrightingDialogue = true;
