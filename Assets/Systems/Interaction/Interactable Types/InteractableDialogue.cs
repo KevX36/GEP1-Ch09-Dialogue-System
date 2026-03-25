@@ -5,7 +5,7 @@ public class InteractableDIalogue : MonoBehaviour, IInteractable
 {
     public ServiceHub hub;
     public string name;
-    public string[] Dialogue;
+    [TextArea]public string[] Dialogue;
     public void Interact()
     {
         if (!hub.DialogueManager.talking)
